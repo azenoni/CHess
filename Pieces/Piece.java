@@ -7,8 +7,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Piece{
-	public Piece() {
+public class Peice{
+	public Peice() {
 		
 	}
 	private static Image loadImage(String name) {
