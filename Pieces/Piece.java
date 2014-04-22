@@ -7,8 +7,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
 public class Peice{
-	public Peice() {
+	
+
+	
+	public Piece() {
 		
 	}
 	private static Image loadImage(String name) {
@@ -25,5 +29,6 @@ public class Peice{
 		}
 
 		return image;
+
 	}
 }
