@@ -7,7 +7,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Piece{
+
+public class Peice{
+	
 
 	
 	public Piece() {
