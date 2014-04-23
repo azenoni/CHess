@@ -1,28 +1,32 @@
 import java.applet.*;
 import java.awt.*;
 import java.util.*;
+import java.*;
 
 public class board extends Applet{
+	public static void main(String[] args) {
+		
+	}
 	public board(){
-		int[][] board = {{16,15,14,13,12,14,15,16}
-						 {11,11,11,11,11,11,11,11}
-						 {0,0,0,0,0,0,0,0}
-						 {0,0,0,0,0,0,0,0}
-						 {0,0,0,0,0,0,0,0}
-						 {0,0,0,0,0,0,0,0}
-						 {1,1,1,1,1,1,1,1}
+		int[][] board = {{16,15,14,13,12,14,15,16},
+						 {11,11,11,11,11,11,11,11},
+						 {0,0,0,0,0,0,0,0},
+						 {0,0,0,0,0,0,0,0},
+						 {0,0,0,0,0,0,0,0},
+						 {0,0,0,0,0,0,0,0},
+						 {1,1,1,1,1,1,1,1},
 						 {6,5,4,3,2,4,5,6}};
 
 		
 	}
 
 	public void drawBoard(){
-		paint(g);
+
 	}
 
 	public void paint(Graphics g) {
-	    int w=getWidth();
-	    int h=getHeight();
+	    int w=0;
+	    int h=0;
 	    int y=0;
 	    for(int j=1;j<=4;j++) {
 
