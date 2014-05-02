@@ -15,22 +15,11 @@ public class board extends Applet{
 						 {0,0,0,0,0,0,0,0},
 						 {0,0,0,0,0,0,0,0},
 						 {1,1,1,1,1,1,1,1},
-<<<<<<< HEAD
 						 {6,5,4,3,2,4,5,6},};
-=======
-						 {6,5,4,3,2,4,5,6}};
->>>>>>> 0586b3a5623f0da7118f203361c1d6d22bf3fd7a
+
 
 		
 	}
-
-<<<<<<< HEAD
-	
-=======
-	public void drawBoard(){
-
-	}
->>>>>>> 0586b3a5623f0da7118f203361c1d6d22bf3fd7a
 
 	public void paint(Graphics g) {
 	    int w=0;

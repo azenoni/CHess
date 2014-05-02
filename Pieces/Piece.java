@@ -8,11 +8,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class Peice{
+public class Piece{
 	
 
 	
-	public Piece() {
+	public void Piece() {
 		
 	}
 	private static Image loadImage(String name) {
