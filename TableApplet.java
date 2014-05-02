@@ -27,44 +27,105 @@ public class TableApplet extends Applet implements ActionListener{
 			btn = new JButton();
 			if (i > 7 && i < 16 || i > 23 && i < 32 || i > 39 && i < 48 || i>55 && i<64) {
 				if (i % 2 == 0) {
-					btn.setBackground(Color.BLACK);
+					btn.setBackground(Color.DARK_GRAY);
 				} else {
-					btn.setBackground(Color.RED);
+					btn.setBackground(Color.LIGHT_GRAY);
 				}	
 				
 			} else {
 				if (i % 2 == 0) {
-					btn.setBackground(Color.RED);
+					btn.setBackground(Color.LIGHT_GRAY);
 				} else {
-					btn.setBackground(Color.BLACK);
+					btn.setBackground(Color.DARK_GRAY);
 				}	
 			}
 
 			String path = null;
 			Image image = null;
+			Image img = null;
+			
+
 			if(i == 0 || i == 7) {
-				rook.loadImage(Color.BLACK);
+				try{
+					path = "img" + File.separator + "rook_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i == 1 || i == 6) {
-				knight.loadImage(Color.BLACK);
+				try{
+					path = "img" + File.separator + "knight_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i == 2 || i == 5) {
-				bishop.loadImage(Color.BLACK);
+				try{
+					path = "img" + File.separator + "bishop_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if(i == 3) {
-				queen.loadImage(Color.BLACK);
+				try{
+					path = "img" + File.separator + "queen_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i == 4) {
-				king = new King(Color.BLACK);
+				try{
+					path = "img" + File.separator + "king_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i > 7 && i<16) {
-				pawn.loadImage(Color.BLACK);
+				try{
+					path = "img" + File.separator + "pawn_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			} else if (i > 47 &&  i < 56) {
-				pawn.loadImage(Color.WHITE);
+				try{
+					path = "img" + File.separator + "pawn_white.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
+			
 			btn.setContentAreaFilled(false);
 			btn.setForeground(Color.BLACK);
 			btn.setOpaque(true);
+			btn.setBorderPainted(false);
 			btn.addActionListener(this);
 			this.add(btn);
 		}
