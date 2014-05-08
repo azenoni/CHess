@@ -18,13 +18,17 @@ public class TableApplet extends Applet implements ActionListener{
 	private Rook rook;
 	private Bishop bishop;
 	private Pawn pawn;
+	private JButton pawnB, queenB, kingB, knightB, rookB, bishopB;
+	private String s;
+	//private Icon icon;
 
 
 	public void init() {
 
 		for (int i = 0; i < 64; i++) {
 			setLayout(new GridLayout(8,8));
-			btn = new JButton();
+			s = "";
+			btn = new JButton(s);
 			if (i > 7 && i < 16 || i > 23 && i < 32 || i > 39 && i < 48 || i>55 && i<64) {
 				if (i % 2 == 0) {
 					btn.setBackground(Color.DARK_GRAY);
@@ -46,6 +50,7 @@ public class TableApplet extends Applet implements ActionListener{
 			
 
 			if(i == 0 || i == 7) {
+				
 				try{
 					path = "img" + File.separator + "rook_black.png";
 					image = ImageIO.read(new File(path));
@@ -56,6 +61,7 @@ public class TableApplet extends Applet implements ActionListener{
 					System.exit(1);
 				}
 			} else if(i == 56 || i == 63) {
+				
 				try{
 					path = "img" + File.separator + "rook_white.png";
 					image = ImageIO.read(new File(path));
@@ -151,6 +157,8 @@ public class TableApplet extends Applet implements ActionListener{
 				}
 			}
 			if (i > 7 && i<16) {
+				s = "p";
+				btn = btn;
 				try{
 					path = "img" + File.separator + "pawn_black.png";
 					image = ImageIO.read(new File(path));
@@ -161,6 +169,8 @@ public class TableApplet extends Applet implements ActionListener{
 					System.exit(1);
 				}
 			} else if (i > 47 &&  i < 56) {
+				// pawnB = new JButton("p");
+				// btn = pawnB;
 				try{
 					path = "img" + File.separator + "pawn_white.png";
 					image = ImageIO.read(new File(path));
@@ -185,8 +195,22 @@ public class TableApplet extends Applet implements ActionListener{
 		super.paint(g);
 	}
 	public void actionPerformed(ActionEvent ae) {
-		
+		if ("p".equals(ae.getActionCommand())) {
+			pawnSelected();
+			if(btn.isEnabled()){
+				btn = pawnB;
+			}
+		}
 	}
+	public void pawnSelected() {
+		// queenB.setEnabled(false);
+		// kingB.setEnabled(false);
+		// rookB.setEnabled(false);
+		// bishopB.setEnabled(false);
+		// knightB.setEnabled(false);
+
+	}
+
 
 
 	
