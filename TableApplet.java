@@ -55,10 +55,30 @@ public class TableApplet extends Applet implements ActionListener{
 					System.out.println("Could not load image at path: " + path);
 					System.exit(1);
 				}
+			} else if(i == 56 || i == 63) {
+				try{
+					path = "img" + File.separator + "rook_white.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i == 1 || i == 6) {
 				try{
 					path = "img" + File.separator + "knight_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
+			} else if(i == 57 || i == 62) {
+				try{
+					path = "img" + File.separator + "knight_white.png";
 					image = ImageIO.read(new File(path));
 					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
 					btn.setIcon(new ImageIcon(img));
@@ -77,6 +97,16 @@ public class TableApplet extends Applet implements ActionListener{
 					System.out.println("Could not load image at path: " + path);
 					System.exit(1);
 				}
+			} else if (i == 58 || i == 61) {
+				try{
+					path = "img" + File.separator + "bishop_white.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if(i == 3) {
 				try{
@@ -88,10 +118,30 @@ public class TableApplet extends Applet implements ActionListener{
 					System.out.println("Could not load image at path: " + path);
 					System.exit(1);
 				}
+			} else if (i == 59) {
+				try{
+					path = "img" + File.separator + "queen_white.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
 			}
 			if (i == 4) {
 				try{
 					path = "img" + File.separator + "king_black.png";
+					image = ImageIO.read(new File(path));
+					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
+					btn.setIcon(new ImageIcon(img));
+				} catch(IOException e) {
+					System.out.println("Could not load image at path: " + path);
+					System.exit(1);
+				}
+			} else if (i == 60) {
+				try{
+					path = "img" + File.separator + "king_white.png";
 					image = ImageIO.read(new File(path));
 					img = image.getScaledInstance(75, 75, java.awt.Image.SCALE_SMOOTH);
 					btn.setIcon(new ImageIcon(img));
