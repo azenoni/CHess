@@ -17,9 +17,20 @@ public class board extends Applet{
 						 {1,1,1,1,1,1,1,1},
 						 {6,5,4,3,2,4,5,6},};
 
+<<<<<<< HEAD
+=======
+	}
+
+
+	public void drawBoard(){
+>>>>>>> be8be3cfd07758620c74343244f9dd642987120f
 
 		
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> be8be3cfd07758620c74343244f9dd642987120f
 
 	public void paint(Graphics g) {
 	    int w=0;
