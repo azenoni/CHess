@@ -169,8 +169,8 @@ public class TableApplet extends Applet implements ActionListener{
 					System.exit(1);
 				}
 			} else if (i > 47 &&  i < 56) {
-				// pawnB = new JButton("p");
-				// btn = pawnB;
+				s = "p";
+				btn = btn;
 				try{
 					path = "img" + File.separator + "pawn_white.png";
 					image = ImageIO.read(new File(path));
