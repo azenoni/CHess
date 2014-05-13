@@ -50,7 +50,8 @@ public class TableApplet extends Applet implements ActionListener{
 			
 
 			if(i == 0 || i == 7) {
-				
+				s = "rook";
+				rookB = new JButton(s);
 				try{
 					path = "img" + File.separator + "rook_black.png";
 					image = ImageIO.read(new File(path));
@@ -61,7 +62,8 @@ public class TableApplet extends Applet implements ActionListener{
 					System.exit(1);
 				}
 			} else if(i == 56 || i == 63) {
-				
+				s = "rook";
+				rookB = new JButton(s);
 				try{
 					path = "img" + File.separator + "rook_white.png";
 					image = ImageIO.read(new File(path));
@@ -200,6 +202,9 @@ public class TableApplet extends Applet implements ActionListener{
 			if(btn.isEnabled()){
 				btn = pawnB;
 			}
+		}
+		if ("rook".equals(ae.getActionCommand())) {
+			btn.setEnabled(false);
 		}
 	}
 	public void pawnSelected() {
