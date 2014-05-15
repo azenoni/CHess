@@ -20,42 +20,52 @@ public class TApplet extends Applet implements ActionListener{
 	private Bishop bishop;
 	private Pawn pawn;
 	private Knight knight;
+	private JButton[][] board;
+	private JButton lastClicked;
 
 	public void init() {
 		setLayout(new GridLayout(8,8));
-		JButton[][] board = new JButton[8][8];
+		board = new JButton[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int x = 0; x < 8; x++) {
 				if (i == 0 || i == 7) {
 					if (x == 0 || x == 7) {
 						btn = new JButton("r");
 						if (i == 0) {
+							rook = new Rook(Color.BLACK,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("rook_black")));
 						} else {
+							rook = new Rook(Color.WHITE,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("rook_white")));
 						}
 					}
 					if (x == 1 || x == 6) {
 						btn = new JButton("kn");
 						if (i == 0) {
+							knight = new Knight(Color.BLACK,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("knight_black")));
 						} else {
+							knight = new Knight(Color.WHITE,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("knight_white")));
 						}
 					}
 					if (x == 2 || x == 5) {
 						btn = new JButton("b");
 						if (i == 0) {
+							bishop = new Bishop(Color.BLACK,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("bishop_black")));
 						} else {
+							bishop = new Bishop(Color.WHITE,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("bishop_white")));
 						}
 					}
 					if (x == 3) {
 						btn = new JButton("q");
 						if (i == 0) {
+							queen = new Queen(Color.BLACK,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("queen_black")));
 						} else {
+							queen = new Queen(Color.WHITE,i,x);
 							btn.setIcon(new ImageIcon(Piece.loadImage("queen_white")));
 						}
 					}
@@ -64,9 +74,10 @@ public class TApplet extends Applet implements ActionListener{
 
 						if (i == 0) {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_black")));
-							king = new King(Color.WHITE, i,x);
+							king = new King(Color.BLACK, i,x);
 						} else {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_white")));
+							king = new King(Color.WHITE, i,x);
 						}
 					}
 				} else if (i == 1 || i == 6) {
@@ -105,16 +116,20 @@ public class TApplet extends Applet implements ActionListener{
 		super.paint(g);
 	}
 	public void actionPerformed(ActionEvent ae) {
+		lastClicked = (JButton)ae.getSource();
+		board[0][0] = lastClicked;
 		if ("p".equals(ae.getActionCommand())) {
-			btn.setEnabled(false);
+			
 		}
 		if ("".equals(ae.getActionCommand())) {
-			btn.setEnabled(false);
+			//btn.setEnabled(false);
 		}
 		repaint();
 
 	}
-	public void swap(JButton x, JButton y){
-
-	}
+	// public JButton[][] swap(Piece x, Piece y){
+	// 	Piece temp = new Piece(x.getColor(),x.getX(),x.getY());
+	// 	x = y;
+	// 	y = temp;
+	// }
 }

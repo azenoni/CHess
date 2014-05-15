@@ -13,19 +13,7 @@ public class Queen extends Piece {
 	private int x;
 	private int y;
 	public Queen(Color color, int x, int y) {
-		this.x = x;
-		this.y = y;
-		this.color = color;
-		this.white = Piece.loadImage("queen_white");
-		this.black = Piece.loadImage("queen_black");
-	}
-	public int getX() {
-		return x;
-	}
-	public int getY() {
-		return y;
-	}
-	public Color getColor() {
-		return this.color;
+		super(color,x,y);
+	
 	}
 }

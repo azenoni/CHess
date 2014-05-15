@@ -6,14 +6,24 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.applet.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.File;
+
 
 
 public class Piece{
-	
+	private Color color;
+	private int x;
+	private int y;
 
 	
-	public Piece() {
-		
+	public Piece(Color color, int x, int y) {
+		this.color = color;
+		this.x = x;
+		this.y = y;
 	}
 	public static Image loadImage(String name) {
 		String path = null;
@@ -32,5 +42,14 @@ public class Piece{
 
 		return img;
 
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	public Color getColor() {
+		return this.color;
 	}
 }
