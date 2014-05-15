@@ -10,9 +10,17 @@ public class Rook extends Piece {
 	private Color color;
 	private Image white;
 	private Image black;
-	public Rook(Color color) {
+	public Rook(Color color, int x, int y) {
 		this.color = color;
+		this.x = x;
+		this.y = y;
 		this.white = Piece.loadImage("rook_white");
 		this.black = Piece.loadImage("rook_black");
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
 	}
 }

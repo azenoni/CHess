@@ -14,6 +14,12 @@ import javax.imageio.ImageIO;
 
 public class TApplet extends Applet implements ActionListener{
 	private JButton btn;
+	private King king;
+	private Queen queen;
+	private Rook rook;
+	private Bishop bishop;
+	private Pawn pawn;
+	private Knight knight;
 
 	public void init() {
 		setLayout(new GridLayout(8,8));
@@ -55,8 +61,10 @@ public class TApplet extends Applet implements ActionListener{
 					}
 					if (x == 4) {
 						btn = new JButton("ki");
+
 						if (i == 0) {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_black")));
+							king = new King(Color.WHITE);
 						} else {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_white")));
 						}
@@ -104,6 +112,9 @@ public class TApplet extends Applet implements ActionListener{
 			btn.setEnabled(false);
 		}
 		repaint();
+
+	}
+	public void swap(JButton x, JButton y){
 
 	}
 }
