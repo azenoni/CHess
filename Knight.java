@@ -10,6 +10,8 @@ public class Knight extends Piece {
 	private Color color;
 	private Image white;
 	private Image black;
+	private int x;
+	private int y;
 	public Knight(Color color, int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -22,5 +24,8 @@ public class Knight extends Piece {
 	}
 	public int getY() {
 		return y;
+	}
+	public Color getColor() {
+		return this.color;
 	}
 }

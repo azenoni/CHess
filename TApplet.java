@@ -64,7 +64,7 @@ public class TApplet extends Applet implements ActionListener{
 
 						if (i == 0) {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_black")));
-							king = new King(Color.WHITE);
+							king = new King(Color.WHITE, i,x);
 						} else {
 							btn.setIcon(new ImageIcon(Piece.loadImage("king_white")));
 						}

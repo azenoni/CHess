@@ -10,6 +10,8 @@ public class Rook extends Piece {
 	private Color color;
 	private Image white;
 	private Image black;
+	private int x;
+	private int y;
 	public Rook(Color color, int x, int y) {
 		this.color = color;
 		this.x = x;
@@ -22,5 +24,8 @@ public class Rook extends Piece {
 	}
 	public int getY() {
 		return y;
+	}
+	public Color getColor() {
+		return this.color;
 	}
 }

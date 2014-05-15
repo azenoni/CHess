@@ -28,4 +28,7 @@ public class King extends Piece {
 	public int getY() {
 		return y;
 	}
+	public Color getColor() {
+		return this.color;
+	}
 }
