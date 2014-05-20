@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 public class TApplet extends Applet implements ActionListener{
 	private JButton btn;
+	//private Piece piece;
 	private King king;
 	private Queen queen;
 	private Rook rook;
@@ -21,93 +22,138 @@ public class TApplet extends Applet implements ActionListener{
 	private Pawn pawn;
 	private Knight knight;
 	private JButton[][] board;
-	private JButton lastClicked;
+	private JButton lastClicked, temp;
+	private boolean selected = false;
 
 	public void init() {
+		
+		btn = new JButton();
 		setLayout(new GridLayout(8,8));
 		board = new JButton[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int x = 0; x < 8; x++) {
+				Piece piece = null;
 				if (i == 0 || i == 7) {
 					if (x == 0 || x == 7) {
-						btn = new JButton("r");
+						//btn = new JButton("r");
 						if (i == 0) {
 							rook = new Rook(Color.BLACK,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("rook_black")));
+							rook.setIcon(new ImageIcon(Piece.loadImage("rook_black")));
+							piece = rook;
 						} else {
 							rook = new Rook(Color.WHITE,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("rook_white")));
+							rook.setIcon(new ImageIcon(Piece.loadImage("rook_white")));
+							piece = rook;
 						}
 					}
 					if (x == 1 || x == 6) {
-						btn = new JButton("kn");
+						//btn = new JButton("kn");
 						if (i == 0) {
 							knight = new Knight(Color.BLACK,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("knight_black")));
+							knight.setIcon(new ImageIcon(Piece.loadImage("knight_black")));
+							piece = knight;
 						} else {
 							knight = new Knight(Color.WHITE,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("knight_white")));
+							knight.setIcon(new ImageIcon(Piece.loadImage("knight_white")));
+							piece = knight;
 						}
 					}
 					if (x == 2 || x == 5) {
-						btn = new JButton("b");
+						//btn = new JButton("b");
 						if (i == 0) {
 							bishop = new Bishop(Color.BLACK,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("bishop_black")));
+							bishop.setIcon(new ImageIcon(Piece.loadImage("bishop_black")));
+							piece = bishop;
 						} else {
 							bishop = new Bishop(Color.WHITE,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("bishop_white")));
+							bishop.setIcon(new ImageIcon(Piece.loadImage("bishop_white")));
+							piece = bishop;
 						}
 					}
 					if (x == 3) {
-						btn = new JButton("q");
+						//btn = new JButton("q");
 						if (i == 0) {
 							queen = new Queen(Color.BLACK,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("queen_black")));
+							queen.setIcon(new ImageIcon(Piece.loadImage("queen_black")));
+							piece = queen;
 						} else {
 							queen = new Queen(Color.WHITE,i,x);
-							btn.setIcon(new ImageIcon(Piece.loadImage("queen_white")));
+							queen.setIcon(new ImageIcon(Piece.loadImage("queen_white")));
+							piece = queen;
 						}
 					}
 					if (x == 4) {
-						btn = new JButton("ki");
+						//btn = new JButton("ki");
 
 						if (i == 0) {
-							btn.setIcon(new ImageIcon(Piece.loadImage("king_black")));
 							king = new King(Color.BLACK, i,x);
+							king.setIcon(new ImageIcon(Piece.loadImage("king_black")));
+							piece = king;
 						} else {
-							btn.setIcon(new ImageIcon(Piece.loadImage("king_white")));
 							king = new King(Color.WHITE, i,x);
+							king.setIcon(new ImageIcon(Piece.loadImage("king_white")));
+							piece = king;
 						}
 					}
+
 				} else if (i == 1 || i == 6) {
-					btn = new JButton("p");
+					//btn = new JButton("p");
+
 					if (i == 1) {
-						btn.setIcon(new ImageIcon(Piece.loadImage("pawn_black")));
+						pawn = new Pawn(Color.BLACK,i,x);
+						pawn.setIcon(new ImageIcon(Piece.loadImage("pawn_black")));
+						piece = pawn;
 					} else {
-						btn.setIcon(new ImageIcon(Piece.loadImage("pawn_white")));
+						pawn = new Pawn(Color.WHITE,i,x);
+						pawn.setIcon(new ImageIcon(Piece.loadImage("pawn_white")));
+						piece = pawn;
 					}
 				} else {
-					btn = new JButton();
+					if (piece == null) {
+						System.out.println("null");
+						if (i%2 == 0) {
+							if (x%2 == 0) {
+								btn.setBackground(Color.DARK_GRAY);
+							} else {
+								// dark color
+								btn.setBackground(Color.LIGHT_GRAY);
+							}
+						} else {
+							if (x%2 == 0) {
+								// dark color
+								btn.setBackground(Color.LIGHT_GRAY);
+							} else {
+								btn.setBackground(Color.DARK_GRAY);
+							}
+						}
+						btn.setBorderPainted(false);
+						btn.setOpaque(true);
+						btn.addActionListener(this);
+						board[i][x] = btn;
+						this.add(btn);
+						continue;
+					}
+					//btn = new JButton();
 				} 
 				if (i % 2 == 0) {
 					if (x % 2 == 0) {
-						btn.setBackground(Color.DARK_GRAY);
+						piece.setBackground(Color.DARK_GRAY);
 					} else {
-						btn.setBackground(Color.LIGHT_GRAY);
+						piece.setBackground(Color.LIGHT_GRAY);
 					}
 				} else{
 					if (x % 2 == 1) {
-						btn.setBackground(Color.DARK_GRAY);
+						piece.setBackground(Color.DARK_GRAY);
 					} else {
-						btn.setBackground(Color.LIGHT_GRAY);
+						piece.setBackground(Color.LIGHT_GRAY);
 					}
 				}
-				btn.setBorderPainted(false);
-				btn.setOpaque(true);
-				btn.addActionListener(this);
-				this.add(btn);
-				board[i][x] = btn;
+				piece.setBorderPainted(false);
+				piece.setOpaque(true);
+				piece.addActionListener(this);
+				this.add(piece);
+				board[i][x] = piece;
+				board[i][x].addActionListener(this);
 			}
 			
 		}
@@ -116,8 +162,21 @@ public class TApplet extends Applet implements ActionListener{
 		super.paint(g);
 	}
 	public void actionPerformed(ActionEvent ae) {
-		lastClicked = (JButton)ae.getSource();
-		board[0][0] = lastClicked;
+		JButton currentlyClicked = (JButton)ae.getSource();
+		for (int i = 0; i < 8; i++) {
+			for (int x = 0; x < 8; x++) {
+				if (ae.getSource() == board[i][x] && !selected) {
+					this.temp = new JButton();
+					this.temp = board[i][x];
+					board[i][x].setEnabled(false);
+					selected = true;
+				} else {
+					//board[i][x] = this.temp.getMoveLocations();
+				}
+			}
+		}
+		//lastClicked = (JButton)ae.getSource();
+		//board[0][0] = lastClicked;
 		if ("p".equals(ae.getActionCommand())) {
 			
 		}

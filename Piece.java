@@ -14,7 +14,7 @@ import java.io.File;
 
 
 
-public class Piece{
+public class Piece extends JButton{
 	private Color color;
 	private int x;
 	private int y;
