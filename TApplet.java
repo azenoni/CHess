@@ -24,9 +24,10 @@ public class TApplet extends Applet implements ActionListener{
 	private JButton[][] board;
 	private JButton lastClicked, temp;
 	private boolean selected = false;
+	private Piece currentPiece;
 
 	public void init() {
-		
+		System.out.println("init");
 		btn = new JButton();
 		setLayout(new GridLayout(8,8));
 		board = new JButton[8][8];
@@ -109,31 +110,7 @@ public class TApplet extends Applet implements ActionListener{
 						piece = pawn;
 					}
 				} else {
-					if (piece == null) {
-						System.out.println("null");
-						if (i%2 == 0) {
-							if (x%2 == 0) {
-								btn.setBackground(Color.DARK_GRAY);
-							} else {
-								// dark color
-								btn.setBackground(Color.LIGHT_GRAY);
-							}
-						} else {
-							if (x%2 == 0) {
-								// dark color
-								btn.setBackground(Color.LIGHT_GRAY);
-							} else {
-								btn.setBackground(Color.DARK_GRAY);
-							}
-						}
-						btn.setBorderPainted(false);
-						btn.setOpaque(true);
-						btn.addActionListener(this);
-						board[i][x] = btn;
-						this.add(btn);
-						continue;
-					}
-					//btn = new JButton();
+					piece = new EmptyPiece(getBoardColor(i,x),i,x);						
 				} 
 				if (i % 2 == 0) {
 					if (x % 2 == 0) {
@@ -153,28 +130,125 @@ public class TApplet extends Applet implements ActionListener{
 				piece.addActionListener(this);
 				this.add(piece);
 				board[i][x] = piece;
-				board[i][x].addActionListener(this);
+				//board[i][x].addActionListener(this);
 			}
 			
+		}
+	}
+
+	private Color getBoardColor(int x,int y)
+	{
+		if (x% 2 == 0) {
+			if (y % 2 == 0) {
+				return Color.DARK_GRAY;
+			} else{
+				return Color.LIGHT_GRAY;
+			}
+		} else {
+			if (y % 2 == 1) {
+				return Color.DARK_GRAY;
+			} else{
+				return Color.LIGHT_GRAY;
+			}
 		}
 	}
 	public void paint(Graphics g){
 		super.paint(g);
 	}
 	public void actionPerformed(ActionEvent ae) {
-		JButton currentlyClicked = (JButton)ae.getSource();
-		for (int i = 0; i < 8; i++) {
-			for (int x = 0; x < 8; x++) {
-				if (ae.getSource() == board[i][x] && !selected) {
-					this.temp = new JButton();
-					this.temp = board[i][x];
-					board[i][x].setEnabled(false);
-					selected = true;
-				} else {
-					//board[i][x] = this.temp.getMoveLocations();
-				}
+ 		if (ae.getSource().getClass() != EmptyPiece.class) {
+			currentPiece = (Piece)ae.getSource();
+		}
+		else if(currentPiece != null) {
+			EmptyPiece temp = (EmptyPiece)ae.getSource();
+			if(currentPiece.canMoveHere(temp.getBoardX(),temp.getBoardY()))
+			{
+				System.out.println("button");
+				board[temp.getBoardX()][temp.getBoardY()] = currentPiece;
+				Point xy = currentPiece.getLocation();
+				int x = currentPiece.getBoardX();
+				int y = currentPiece.getBoardY();
+				System.out.println("Empyt x:"+temp.getX()+" y:"+temp.getY());
+				currentPiece.setLocation(temp.getLocation());
+				currentPiece.setBoardX(temp.getBoardX());
+				currentPiece.setBoardY(temp.getBoardY());
+				//swapPieces(currentPiece, temp)
+				board[currentPiece.getBoardX()][currentPiece.getBoardY()] = temp;
+				temp.setLocation(xy);
+				temp.setBoardX(x);
+				temp.setBoardY(y);
+				System.out.println("current x:"+xy.getX()+" y:"+xy.getY());
+				currentPiece.setBackground(getBoardColor(currentPiece.getBoardX(),currentPiece.getBoardY()));
+				temp.setBackground(getBoardColor(temp.getBoardX(),temp.getBoardY()));
+				currentPiece = null;
 			}
 		}
+ 		else if (ae.getSource().getClass() != EmptyPiece.class && currentPiece !=null) {
+ 			Piece otherPiece = (Piece)ae.getSource();
+ 			if(currentPiece.canTakePiece(otherPiece)) {
+ 				//make new empty piece,
+ 				//move current piece to otherPiece
+ 				//move empty peice where current peiece was
+ 			}
+		}		
+		//JButton temp = new JButton();
+		
+		// if (ae.getSource) {
+			
+		// }
+		// temp = (JButton)ae.getSource();
+		//int x = temp.
+		// if (!selected) {
+		// 	JButton lastClicked = (JButton)ae.getSource();
+		// 	selected = true;
+		// } else if (selected) {
+		// 	System.out.println("swap");
+		// 	btn = (JButton)ae.getSource();
+		// 	JButton temp = lastClicked;
+		// 	lastClicked = btn;
+		// 	btn = lastClicked;
+		// 	selected = false;
+		// }
+		
+		// for (int i = 0; i < 8; i++) {
+		// 	for (int x = 0; x < 8; x++) {
+		// 		if (ae.getSource() == board[i][x]) {
+		// 			if (board[i][x] == rook) {
+		// 				System.out.println("rook");
+		// 			}
+		// 			//System.out.println("Rook");
+		// 			break;
+		// 		}
+		// 		// if (ae.getSource() == board[i][x] && !selected) {
+		// 		// 	System.out.println("1");
+		// 		// 	int xP = ((Piece)board[i][x]).getX();
+		// 		// 	int y = ((Piece)board[i][x]).getY();
+		// 		// 	Color color = ((Piece)board[i][x]).getColor();
+		// 		// 	Piece piece = new Piece(color,xP,y);
+		// 		// 	ptemp = piece;
+		// 		// 	selected = true;
+		// 		// } else if ((JButton)ae.getSource() == board[i][x] && selected) {
+		// 		// 	System.out.println("2");
+		// 		// 	temp = board[i][x];
+		// 		// 	board[i][x] = ptemp;
+
+		// 		// }
+		// 		// if ((JButton)ae.getSource() == board[i][x] && !selected) {
+		// 		// 	System.out.println("swap");
+		// 		// 	this.temp = new JButton();
+		// 		// 	this.temp = board[i][x];
+		// 		// 	board[i][x].setEnabled(false);
+		// 		// 	selected = true;
+		// 		// 	break;
+		// 		// } else if(selected) {
+		// 		// 	System.out.println("Swapped");
+		// 		// 	board[i][x] = temp;
+		// 		// 	selected = false;
+		// 		// 	break;
+		// 		// }
+		// 	}
+		// 	//break;
+		// }
 		//lastClicked = (JButton)ae.getSource();
 		//board[0][0] = lastClicked;
 		if ("p".equals(ae.getActionCommand())) {

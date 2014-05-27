@@ -15,15 +15,15 @@ import java.io.File;
 
 
 public class Piece extends JButton{
-	private Color color;
-	private int x;
-	private int y;
+	protected Color color;
+	protected int boardX;
+	protected int boardY;
 
 	
-	public Piece(Color color, int x, int y) {
+	public Piece(Color color, int boardX, int boardY) {
 		this.color = color;
-		this.x = x;
-		this.y = y;
+		this.boardX = boardX;
+		this.boardY = boardY;
 	}
 	public static Image loadImage(String name) {
 		String path = null;
@@ -43,13 +43,25 @@ public class Piece extends JButton{
 		return img;
 
 	}
-	public int getX() {
-		return x;
+	public boolean canMoveHere(int x, int y) {
+		return false;
 	}
-	public int getY() {
-		return y;
+	public boolean canTakePiece(Piece piece) {
+		return false;
+	}
+	public int getBoardX() {
+		return boardX;
+	}
+	public int getBoardY() {
+		return boardY;
 	}
 	public Color getColor() {
 		return this.color;
+	}
+	public void setBoardX(int boardX) {
+		this.boardX = boardX;
+	}
+	public void setBoardY(int boardY) {
+		this.boardY =boardY;
 	}
 }
