@@ -20,13 +20,49 @@ public class Bishop extends Piece {
 			retVal = true;
 		}
 		if (retVal) {
-			for (int z = 1; z < Math.abs(boardX - x) - 1; z++) {
-					if (board[boardX+z][boardY+z].getClass() != (EmptyPiece.class)) {
-						System.out.println("bust");
-						retVal = false;
-					} else {
-						//retVal = false;
+			for (int z = 0; z < Math.abs(boardX - x) - 1; z++) {
+					if (x < boardX) {
+						if (y < boardY) {
+							if (board[boardX-z][boardY-z].getClass() != (EmptyPiece.class)) {
+								System.out.println("bust");
+								retVal = false;
+							} else {
+								//retVal = false;
+							}
+						}
+						if (y > boardY) {
+							if (board[boardX-z][boardY+z].getClass() != (EmptyPiece.class)) {
+								System.out.println("bust");
+								retVal = false;
+							} else {
+								//retVal = false;
+							}
+						}
 					}
+					if (x > boardX) {
+						if (y < boardY) {
+							if (board[boardX+z][boardY-z].getClass() != (EmptyPiece.class)) {
+								System.out.println("bust");
+								retVal = false;
+							} else {
+								//retVal = false;
+							}
+						}
+						if (y > boardY) {
+							if (board[boardX+z][boardY+z].getClass() != (EmptyPiece.class)) {
+								System.out.println("bust");
+								retVal = false;
+							} else {
+								//retVal = false;
+							}
+						}
+					}
+					// if (board[boardX+z][boardY+z].getClass() != (EmptyPiece.class)) {
+					// 	System.out.println("bust");
+					// 	retVal = false;
+					// } else {
+					// 	//retVal = false;
+					// }
 				
 				// if (Math.abs(boardX - z) == x && boardY + z == y) {
 				// 	retVal = true;
