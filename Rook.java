@@ -18,8 +18,41 @@ public class Rook extends Piece {
 	 	if (x == boardX || y == boardY) {
 	 		retVal = true;
 	 	}
+	 	// if (retVal) {
+	 	// 	if (x == boardX) {
+	 	// 		if (color == Color.BLACK) {
+	 	// 			for (int i = 1; i < y-1; i++) {
+	 	// 				if (board[x][Math.abs(boardY + i)].getClass() != EmptyPiece.class) {
+	 	// 					return false;
+	 	// 				}
+	 	// 			}
+	 	// 		} else{
+	 	// 			for (int i = 1; i < y-1; i++) {
+	 	// 				System.out.println("move down");
+	 	// 				if(board[x][Math.abs(boardY - i)].getClass() != EmptyPiece.class) {
+	 	// 					return false;
+			// 			}
+	 	// 			}
+	 	// 		}
+	 	// 	} else if (y == boardY) {
+	 	// 		if (color == Color.BLACK) {
+	 	// 			for (int i = 1; i < x-boardX; i++) {
+	 	// 				if (board[Math.abs(boardX + i)][y].getClass() != EmptyPiece.class) {
+	 	// 					System.out.println("moving downssss");
+	 	// 					return false;
+	 	// 				}
+	 	// 			}
+	 	// 		} else{
+	 	// 			for (int i = 1; i > x-1; i--) {
+	 	// 				if(board[Math.abs(boardX - i)][y].getClass() != EmptyPiece.class) {
+	 	// 					return false;
+			// 			}
+	 	// 			}
+	 	// 		}
+	 	// 	}
+	 	// }
 	 	return retVal;
-	 }
+	}
 	 @Override
 	 public boolean canTakePiece(Piece otherPiece) {
 	 	boolean retVal = false;
@@ -48,4 +81,5 @@ public class Rook extends Piece {
 	 	//bla bla bla
 	 	return retVal;
 	 }
+	
 }

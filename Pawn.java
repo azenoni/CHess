@@ -25,8 +25,12 @@ public class Pawn extends Piece {
 	 		if(y == this.boardY) {
 	 			//System.out.println("1");
 	 			if (firstMove && x == this.boardX + 2) {
-	 				retVal = true;
-	 				firstMove = false;
+	 				if (board[boardX+1][y].getClass() != EmptyPiece.class) {
+	 					retVal = false;
+	 				} else {
+		 				retVal = true;
+		 				firstMove = false;
+	 				}
 	 			}
 	 			if(x == this.boardX+1) {
 	 				//System.out.println("2");
@@ -38,8 +42,14 @@ public class Pawn extends Piece {
 	 	else {
 	 		if(y == this.boardY) {
 	 			if (firstMove && x == this.boardX - 2) {
-	 				retVal = true;
-	 				firstMove = false;
+	 				if (board[boardX-1][y].getClass() != EmptyPiece.class) {
+	 					retVal = false;
+	 				} else {
+	 					retVal = true;
+	 					firstMove = false;
+	 				}
+	 				
+	 				
 	 			}
 	 			if(x == this.boardX-1) {
 	 				retVal = true;
