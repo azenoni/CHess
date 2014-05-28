@@ -39,26 +39,26 @@ public class Queen extends Piece {
 		if (y == boardY || x == boardX) {
 			retVal = true;
 		}
-		if (retVal) {
-			if (y == boardY) {
-				for (z = 1; z < x; z++) {
-					if (!board[Math.abs(x-z)][y].equals(EmptyPiece.class)) {
-						System.out.println("ends zzzz");
-						return false;
-					} 
-				}
-			}else if (x == boardX) {
-				if (x > boardX) {
-					//going up
-					for (z = 1; z < y-1; z++) {
-						if (!board[x][y+z].equals(EmptyPiece.class)) {
-							System.out.println("ends up");
-							return false;
-						}
-					}
-				}				
-			}
-		}
+		// if (retVal) {
+		// 	if (y == boardY) {
+		// 		for (z = 1; z < x; z++) {
+		// 			if (!board[Math.abs(x-z)][y].equals(EmptyPiece.class)) {
+		// 				System.out.println("ends zzzz");
+		// 				return false;
+		// 			} 
+		// 		}
+		// 	}else if (x == boardX) {
+		// 		if (x > boardX) {
+		// 			//going up
+		// 			for (z = 1; z < y-1; z++) {
+		// 				if (!board[x][y+z].equals(EmptyPiece.class)) {
+		// 					System.out.println("ends up");
+		// 					return false;
+		// 				}
+		// 			}
+		// 		}				
+		// 	}
+		// }
 		// if (whiteTurn) {
 		// 	whiteTurn = false;
 		// } else {
