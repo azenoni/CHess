@@ -18,6 +18,8 @@ public class Piece extends JButton{
 	protected Color color;
 	protected int boardX;
 	protected int boardY;
+	protected boolean whiteTurn = true;
+	protected JButton[][] board;
 
 	
 	public Piece(Color color, int boardX, int boardY) {
@@ -43,7 +45,8 @@ public class Piece extends JButton{
 		return img;
 
 	}
-	public boolean canMoveHere(int x, int y) {
+	public boolean canMoveHere(JButton board[][] ,int x,int y) {
+		this.board = board;
 		return false;
 	}
 	public boolean canTakePiece(Piece piece) {
